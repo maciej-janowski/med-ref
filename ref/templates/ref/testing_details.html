@@ -1,0 +1,50 @@
+{% extends "ref/base.html" %}
+{%load static%}
+{% block content %}
+{%if messages%}
+{%for message in messages%}
+<div class="alert alert-{{message.tags}}">
+{{message}}
+</div>
+{%endfor%}
+{%endif%}
+
+<div class="my-2 mr-4 header_details" >
+  <section>
+    <div class="align-items-center">
+      <div>
+        <div class="card">
+          <div class="card-header white">
+            <h4 class="font-weight-bold mb-0"> Date of issue: {{test.date_of_issue}}</h4>
+          </div>
+          <div class="card-body">
+            <p class="card-text">
+              <h5>Testing clinic: {{test.fk_medic.clinic_info}}</h5>
+              <h5>Medic prescribing: {{test.fk_medic}}</h5>
+              <h5>Patient: {{test.fk_patient}}</h5>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<a href="{%url 'testing_printout'  test.id%}" ><button type="button" class="btn btn-teal btn-rounded btn-primary waves-effect">Print prescription</button></a>
+{%if user.email in medics%}
+  <a href="{%url 'testing_delete'  test.id%}" ><button type="button" class="btn btn-warning btn-rounded btn-primary waves-effect">Delete prescription</button></a>
+{%endif%}
+{%if user.email in medics%}
+  <a href="{%url 'testing_modify'  test.id%}" ><button type="button" class="btn btn-warning btn-rounded btn-light waves-effect">Modify prescription</button></a>
+{%endif%}
+<div id="testing_details" class="card">
+    <div class="card-header white testing_details_header">
+        <h2>Prescribed testing</h2>
+    </div>
+      {%for type in details%}
+        <h6>{{type}}</h6>
+      {%endfor%}
+</div>
+
+
+{%endblock content%}

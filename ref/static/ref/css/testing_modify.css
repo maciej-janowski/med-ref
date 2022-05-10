@@ -1,0 +1,19 @@
+/* #modify_form {
+  width: 40%;
+} */
+
+.formset_testing {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 800px;
+}
+.formset_testing > * {
+  flex: 1 1 400px;
+}
+.formset_testing p label[for*="test_type"] {
+  display: none;
+}
+/* #modify_form p:nth-child(even) {
+  display: inline;
+} */

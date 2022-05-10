@@ -1,0 +1,36 @@
+{% extends "ref/base.html" %}
+
+{% block content %}
+<table id='items_table' class="table table-hover table-striped table-responsive-md btn-table">
+  <thead>
+    <tr>
+      <th scope="col">Date of issue</th>
+        {%if user.email in medics%}
+          <th scope="col">Patient</th>
+        {%endif%}
+        {%if user.email in patients%}
+          <th scope="col">Medic</th>
+        {%endif%}
+      <th scope="col">Testing details</th>
+    </tr>
+  </thead>
+  <tbody>
+
+  {%for item in items%}
+    <tr>
+
+      <td>{{item.date_of_issue}}</td>
+        {%if user.email in patients%}
+          <td>{{item.fk_medic}}</td>
+        {%endif%}
+        {%if user.email in medics%}
+          <td>{{item.fk_patient}}</td>
+        {%endif%}
+      <td>
+        <a href="{% url 'testing_details' item.id %}"><button type="button" class="btn btn-teal btn-rounded btn-primary waves-effect">Check details</button></a>
+      </td>
+    </tr>
+  {%endfor%}
+  </tbody>
+</table>
+{%endblock content%}

@@ -1,0 +1,12 @@
+
+{% extends "ref/base.html" %}
+{% block content %}
+<div class="col-lg-4 col-md-4 col-sm-4 container justify-content-center">
+     <div class="col text-center first_line">
+        <h3 class="logout_text">You have been successfully logged out</h3>
+     </div>
+      <div class="col text-center second_line">
+        <a class="text-white logout_text" href="{% url 'login'%}">Log in again</a>
+      </div>
+</div>
+{%endblock content%}

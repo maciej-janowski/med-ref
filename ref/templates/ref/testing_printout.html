@@ -1,0 +1,94 @@
+
+{%load static%}
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+<style>
+
+
+#div1 {
+    display: inline-block;
+
+}
+#div2 {
+    display: inline-block;
+
+}
+
+</style>
+<link rel="stylesheet" type="text/css" href="/static/ref/css/print.css?{% now 'U' %}">
+	<meta charset="UTF-8">
+</head>
+
+<body onload="window.print()">
+    <!-- Content for Static Frame 'header_frame' -->
+    <img id="logo_print" src="{% static 'ref/images/logo_print.png'%}"/>
+
+	 <table cellpadding="3px" class="table_details">
+    	<tr>
+
+    		<th>Details</th>
+
+    	</tr>
+			<tr></tr>
+    	<tr>
+    		<td><strong>Date of prescription:</strong> {{test.date_of_issue}}</td>
+    	</tr>
+        <tr>
+    		<td><strong>Patient:</strong> {{test.fk_patient}}</td>
+    	</tr>
+        <tr>
+    		<td><strong>Doctor prescribing:</strong> {{test.fk_medic}}</td>
+    	</tr>
+		<tr>
+    		<td><strong>Number of tests to be performed: {{details_counter}}</strong></td>
+    	</tr>
+    </table>
+
+	
+    <div id="header_content">
+<div id="wrapper">
+    <div id="div1">
+		<h3>Date of printing</h3>
+	</div>
+    <div id="div2">
+		<h3 id="date"></h3>
+	</div>
+</div>
+    	<!-- <h3 style="margin-top:0px">{{car}} {{plate}}</h3> -->
+    </div>
+
+    <!-- HTML Content -->
+	<hr>
+
+
+
+
+	<section class="prescribed_testing">
+		{%for test in details%}
+			<div class="testing_item">
+				<input type="checkbox"  name="testing_med" checked>
+				<label for="testing_med">{{test}}</label>
+			</div>
+		{%endfor%}
+	</section>
+    <hr>
+	<br>
+    <br>
+    <h3>.......................................</h3>
+    <p><strong>Medic signature and stamp</strong></p>
+
+
+</body>
+
+
+<script>
+	n =  new Date();
+y = n.getFullYear();
+m = n.getMonth() + 1;
+d = n.getDate();
+document.getElementById("date").innerHTML = d +"-" + m + "-" + y;
+
+
+
+</script>
+</html>

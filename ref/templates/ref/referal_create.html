@@ -1,0 +1,37 @@
+{% extends "ref/base.html" %}
+{%load static%}
+{% block content %}
+
+<div class="juicy-peach-gradient" style="display:flex">
+    <div style="display:inline-block">
+  <form method="POST" class="create_referal" enctype="multipart/form-data">
+    {%csrf_token%}
+     
+     <br>
+     <h3>Referal for patient:</h3>
+{{form.fk_patient}}
+{{form.fk_medic.as_hidden}}
+{{form.date_of_issue.as_hidden}}
+<hr>
+<h3>Prescribed tests:</h3>
+<select name="tests_selection">
+    <option value="">--Please choose a test--</option>
+    {%for test_type in test_types%}
+    <option value="{{test_type}}">{{test_type}}</option>
+    {%endfor%}
+</select>
+<button style="display: block;" id="adding_button" class="btn btn-info">Add another test</button>
+
+     </div>
+    <br>
+{{ form.errors }}
+</div>
+
+ <input type="submit" class="btn btn-info btn_white" name="Submit" value="Create referal">
+</form>
+
+
+
+<script src="static/ref/js/create_referal.js?{% now 'U' %}"></script>
+
+{%endblock content%}

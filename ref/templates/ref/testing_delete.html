@@ -1,0 +1,20 @@
+{% extends "ref/base.html" %}
+{% block content %}
+<div class="page-header my-4">
+<h2>Do you want to delete the medical referal {{item.thing}}?</h2>
+</div>
+
+<form action="" method="POST">
+
+    {%csrf_token%}
+    <div class="row" style="width:100%">
+        <div class="col-lg-6">
+    <button class="btn btn-lg col-lg-6 btn-dark text-light" type="submit">Yes, I want to delete</button>
+            </div>
+        <div class="col-lg-6">
+    <a class="btn btn-lg col-lg-6 btn-info text-light" href="javascript:history.back()">No, return to previous page </a>
+        </div>
+    </div>
+</form>
+
+{%endblock content%}

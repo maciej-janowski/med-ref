@@ -1,0 +1,20 @@
+.table_details {
+  display: inline-block;
+  margin-left: 20%;
+}
+
+.prescribed_testing label {
+  font-size: 12px;
+}
+
+.prescribed_testing {
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+}
+
+.prescribed_testing > * {
+  flex: 1 1 50px;
+}
